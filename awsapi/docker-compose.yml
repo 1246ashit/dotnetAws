@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    image: awsapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:8080"
+    volumes:
+      - app-data:/app/data
+
+volumes:
+  app-data:
+    driver: local

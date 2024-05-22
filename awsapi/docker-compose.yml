@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  web:
+  dotnetApi:
     image: awsapi
     build:
       context: .
@@ -10,6 +10,16 @@ services:
       - "80:8080"
     volumes:
       - app-data:/app/data
+
+  postgresdb:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 123456
+    volumes:
+      - ./data:/var/lib/postgresql/data  # 確保數據持久化的路徑正確
+    ports:
+      - "5432:5432"
 
 volumes:
   app-data:

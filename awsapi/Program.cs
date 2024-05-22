@@ -1,9 +1,11 @@
+using awsapi.Controllers;
 var builder = WebApplication.CreateBuilder(args);
 
 //cros
+var awsApi="awsApi";
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "awsApi",
+    options.AddPolicy(name: awsApi,
                       policy  =>
                       {
                           policy.AllowAnyOrigin()
@@ -18,6 +20,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// 控制器
+builder.Services.AddControllers();
+//
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,6 +33,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(awsApi);//cros
 
-
+app.MapControllers(); // 這裡配置路由以使用控制器
 app.Run();

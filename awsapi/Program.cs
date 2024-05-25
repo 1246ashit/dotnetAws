@@ -2,8 +2,10 @@ using awsapi.Controllers;
 using awsapi.Entities;
 using awsapi.Services;
 using Microsoft.OpenApi.Models;
+using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
+DotNetEnv.Env.Load();//讀取來自.env檔的設定 //記得下載nuget:DotNetEnv
 var _config = builder.Configuration;
 //cros
 var awsApi = "awsApi";

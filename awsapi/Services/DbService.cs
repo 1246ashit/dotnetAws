@@ -15,7 +15,7 @@ namespace awsapi.Services
         }
         public async Task<NpgsqlConnection> GetConnectionAsync()
         {
-            var connection = new NpgsqlConnection(_config.GetConnectionString("dbConnection"));
+            var connection = new NpgsqlConnection(Environment.GetEnvironmentVariable("DB_CONNECTION2"));
             await connection.OpenAsync();
             return connection;
         }

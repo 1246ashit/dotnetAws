@@ -21,3 +21,4 @@ obj/
 *.dgspec.json
 *.assets.json
 *.nuget.cache
+awsapi/.env

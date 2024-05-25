@@ -73,7 +73,8 @@ builder.Services.AddControllers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+var swaggerEnabled = builder.Configuration.GetValue<bool>("Swagger:Enable");
+if (swaggerEnabled)
 {
     app.UseSwagger();
     app.UseSwaggerUI();
